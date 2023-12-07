@@ -8,12 +8,20 @@ from vega_datasets import data
 
 def make_plot(plot_type):
     if plot_type == "scatter_plot":
-        cars = data.cars()
-        return alt.Chart(cars).mark_point().encode(
-            x='Horsepower',
-            y='Miles_per_Gallon',
-            color='Origin',
+        source = pd.read_csv("/workspace/cv-docker/joey04.li/datasets/master_thesis_yolov8/result_test_11_15.csv")
+        # cars = data.cars()
+        return alt.Chart(source).mark_point().encode(
+            x='timesteps',
+            y='count',
+            color='action',
+            # longitude=2,
+            # alt.X()
         )
+        # return alt.Chart(source).mark_line(point=True).encode(
+        #     x='timesteps',
+        #     y='count',
+        #     color='action',
+        # )
     elif plot_type == "heatmap":
         # Compute x^2 + y^2 across a 2D grid
         x, y = np.meshgrid(range(-5, 5), range(-5, 5))
@@ -102,16 +110,16 @@ def make_plot(plot_type):
 
         return c1 + c2
     elif plot_type == "multiline":
-        source = pd.read_csv("/workspace/cv-docker/joey04.li/datasets/master_thesis_rtdetr/result_test11.csv")
+        source = pd.read_csv("/workspace/cv-docker/joey04.li/datasets/master_thesis_yolov8/result_test_11_15.csv")
         # source = data.stocks()
 
         highlight = alt.selection(type='single', on='mouseover',
                                 fields=['symbol'], nearest=True)
 
         base = alt.Chart(source).encode(
-            x='date:T',
-            y='price:Q',
-            color='symbol:N'
+            x='timesteps:T',
+            y='count:Q',
+            color='action:N'
         )
 
         points = base.mark_circle().encode(
