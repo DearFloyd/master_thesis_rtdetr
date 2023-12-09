@@ -3,7 +3,7 @@
 
 # Parameters
 nc: 80  # number of classes
-scales: # model compound scaling constants, i.e. 'model=yolov8n.yaml' will call yolov8.yaml with scale 'n'
+scales: # model compound scaling constants, i.e. 'model=yolov8s-detr-C2f-Ortho.yaml' will call yolov8.yaml with scale 's'
   # [depth, width, max_channels]
   n: [0.33, 0.25, 1024]  # YOLOv8n summary: 225 layers,  3157200 parameters,  3157184 gradients,   8.9 GFLOPs
   s: [0.33, 0.50, 1024]  # YOLOv8s summary: 225 layers, 11166560 parameters, 11166544 gradients,  28.8 GFLOPs
